@@ -1,0 +1,39 @@
+<ion-view title="{{ vertical_ctrl.current_vertical }}" ng-controller="VerticalController as vertical_ctrl">
+    <header class="bar bar-header bar-positive">
+        <h1 class="title">{{ vertical_ctrl.current_vertical}}</h1>
+        <button class="button button-assertive" ng-click="leaveVertical()">Leave</button>
+    </header>
+
+  <ion-content class="has-header padding">
+
+    <div class="list" ng-if="vertical_ctrl.messages.length > 0">
+        <li class="item item-text-wrap no-border {{ isNotCurrentUser(msg.user) }}" ng-repeat="msg in vertical_ctrl.messages">
+            <div class="msg">
+                <div class="details padding">
+                    <p>
+                        <div class="user">{{ msg.user }}</div>
+                        <div class="message">{{ msg.text }}</div>
+                    </p>
+                    <small>{{ humanize(msg.time) }}</small>
+                </div>
+            </div>
+        </li>
+    </div>
+
+    <div class="card" ng-if="!vertical_ctrl.messages.length">
+      <div class="item item-text-wrap">
+        No messages yet.
+      </div>
+    </div>
+
+  </ion-content>
+
+
+<footer class="bar bar-footer bar-positive item-input-inset">
+    <label class="item-input-wrapper">
+      <input type="text" id="message" name="message" ng-model="vertical_ctrl.message" placeholder="Type message">
+    </label>
+    <a class="button button-icon icon ion-android-send" ng-click="sendTextMessage()"></a>
+</footer>
+
+</ion-view>

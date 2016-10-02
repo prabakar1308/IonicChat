@@ -1,0 +1,14 @@
+<ion-view title="Verticals" ng-controller="HomeController as home_ctrl">
+    <header class="bar bar-header bar-positive">
+        <h1 class="title">Verticals</h1>
+    </header>
+
+  <ion-content class="has-header padding">
+    <div class="card" ng-repeat="vertical in home_ctrl.verticals">
+      <div class="item item-text-wrap text-center" ng-click="enterVertical(vertical)">
+        <strong>{{vertical}}</strong>
+      </div>
+    </div>
+  </ion-content>
+
+</ion-view>
